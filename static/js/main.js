@@ -1,1 +1,1 @@
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href'); if(id.length>1){e.preventDefault(); document.querySelector(id)?.scrollIntoView({behavior:'smooth'});}}));
+document.querySelectorAll('.lang').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.lang').forEach(b=>b.classList.remove('active'));btn.classList.add('active');alert(btn.dataset.lang==='es'?'La versión española completa se puede activar en la siguiente actualización.':'English version is active.');});});

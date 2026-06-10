@@ -1,1 +1,4 @@
-{% extends 'base.html' %}{% block content %}<section class="section"><p class="eyebrow">Admin</p><h1>Latest leads</h1><div class="table">{% for l in leads %}<div class="leadrow"><b>{{ l.name }} — {{ l.business }}</b><span>{{ l.created_at }} · {{ l.service }}</span><p>{{ l.email }} · {{ l.phone }}</p><p>{{ l.message }}</p></div>{% else %}<p>No leads yet.</p>{% endfor %}</div></section>{% endblock %}
+{% extends 'base.html' %}
+{% block content %}
+<section class="section light"><div class="admin-card"><span class="eyebrow">Future Admin</span><h1>Admin Dashboard Preview</h1><p>This area can later show enquiries, clients, monthly plans and demo requests.</p><div class="metric-grid big"><div><b>8</b><small>demo categories</small></div><div><b>3</b><small>plans</small></div><div><b>EN/ES</b><small>ready</small></div></div></div></section>
+{% endblock %}

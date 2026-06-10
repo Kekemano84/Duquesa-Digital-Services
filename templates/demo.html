@@ -1,5 +1,19 @@
-{% extends 'base.html' %}{% block content %}
-<section class="pageHero" style="background-image:linear-gradient(90deg,rgba(1,19,35,.92),rgba(1,19,35,.55)),url('{{ service.image }}')"><div><p class="eyebrow">Demo website</p><h1>{{ service.icon }} {{ service.title }}</h1><p>{{ service.subtitle }}</p><a class="btn gold" href="{{ url_for('contact') }}?service={{ service.title }}">Request this demo</a></div></section>
-<section class="section split"><div><p class="eyebrow">Example layout</p><h2>A premium page built to convert visitors into enquiries.</h2><p class="lead">This demo shows the type of section your customer would get: beautiful hero image, service cards, pricing/booking buttons, WhatsApp messages and trust elements.</p><div class="actions"><a class="btn gold" href="https://wa.me/447584724809?text=Hello%2C%20I%20am%20interested%20in%20the%20{{ service.title|urlencode }}%20demo%20website." target="_blank">WhatsApp enquiry</a><a class="btn outlineDark" href="{{ url_for('contact') }}">Contact form</a></div></div><div class="mockPhone"><img src="{{ service.image }}"><h3>{{ service.title }}</h3><ul>{% for f in service.features %}<li>✓ {{ f }}</li>{% endfor %}</ul><button>Request Booking</button></div></section>
-<section class="section dark"><p class="eyebrow">Included ideas</p><h2>What this business type can include</h2><div class="grid services">{% for f in service.features %}<article><h3>{{ f }}</h3><p>Designed in a clean premium style, with clear calls-to-action and mobile-first layout.</p></article>{% endfor %}</div></section>
+{% extends 'base.html' %}
+{% block title %}{{ service.title }} Demo · Duquesa Digital Services{% endblock %}
+{% block content %}
+<section class="demo-hero" style="--bg:url('{{ service.image }}')">
+  <div><span class="eyebrow">Demo Website</span><h1>{{ service.icon }} {{ service.title }}</h1><p>{{ service.desc }}</p><a class="btn primary" href="{{ whatsapp }}" target="_blank">Request this demo</a></div>
+</section>
+<section class="section light demo-layout">
+  <div class="demo-phone">
+    <div class="phone-top"></div>
+    <img src="{{ service.image }}" alt="{{ service.title }}">
+    <h3>{{ service.title }}</h3><p>Fast mobile page with gallery, service cards, contact buttons and clear booking request.</p><a class="btn primary" href="{{ whatsapp }}" target="_blank">WhatsApp enquiry</a>
+  </div>
+  <div class="demo-details">
+    <span class="eyebrow">What this demo includes</span><h2>Designed to sell the service quickly.</h2>
+    <div class="feature-list"><div>✅ Mobile-first landing page</div><div>✅ WhatsApp with pre-filled enquiry</div><div>✅ Prices or quote request</div><div>✅ Gallery and trust sections</div><div>✅ English + Spanish ready</div><div>✅ Upgradeable to booking/admin dashboard</div></div>
+    <a href="{{ url_for('contact') }}?service={{ service.title }}" class="btn ghost-dark">Talk about this demo</a>
+  </div>
+</section>
 {% endblock %}

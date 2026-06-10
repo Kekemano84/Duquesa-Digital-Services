@@ -1,7 +1,7 @@
 # Duquesa Digital Services
 
-Flask sales website for local Duquesa business web services.
+Flask demo/sales website for local business website services.
 
-## Render
-Build Command: `pip install -r requirements.txt`
-Start Command: `gunicorn app:app`
+Render:
+- Build Command: `pip install -r requirements.txt`
+- Start Command: `gunicorn app:app`

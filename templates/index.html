@@ -1,8 +1,66 @@
-{% extends 'base.html' %}{% block content %}
-<section class="hero"><div class="heroText"><p class="eyebrow">Websites for Duquesa businesses</p><h1>Premium websites that bring bookings, messages and local customers.</h1><p>We build modern, mobile-first websites for apartments, restaurants, cafés, taxis, boat trips, cleaning companies, painters and garages.</p><div class="actions"><a class="btn gold" href="#demos">View Demos</a><a class="btn outline" href="{{ url_for('contact') }}">Request a Quote</a></div></div><div class="heroCard"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80"><div><b>Built for local businesses</b><span>Booking forms · WhatsApp · English & Spanish · Admin tools</span></div></div></section>
-<section class="stats"><div><b>Fast</b><span>Launch quickly</span></div><div><b>Mobile</b><span>Designed for phones</span></div><div><b>Local</b><span>Duquesa focused</span></div><div><b>Scalable</b><span>Ready to grow</span></div></section>
-<section id="services" class="section"><p class="eyebrow">What we offer</p><h2>Digital tools for local businesses</h2><div class="grid services">{% for s in services %}<article><span class="icon">{{ s.icon }}</span><h3>{{ s.title }}</h3><p>{{ s.subtitle }}</p><a href="{{ url_for('demo', slug=s.slug) }}">View demo →</a></article>{% endfor %}</div></section>
-<section id="demos" class="section dark"><p class="eyebrow">Demo websites</p><h2>Choose a demo style</h2><div class="grid demoGrid">{% for s in services %}<a class="demoCard" href="{{ url_for('demo', slug=s.slug) }}"><img src="{{ s.image }}"><div><span>{{ s.icon }}</span><h3>{{ s.title }}</h3><p>{{ s.subtitle }}</p></div></a>{% endfor %}</div></section>
-<section id="pricing" class="section"><p class="eyebrow">Simple pricing</p><h2>Setup fee + monthly support</h2><p class="lead">The setup fee builds the website. The monthly fee covers hosting guidance, support, small edits, security updates and keeping the site running.</p><div class="grid pricing">{% for p in plans %}<article class="plan {% if p['name']=='Pro' %}featured{% endif %}"><span class="pill">{{ p['tag'] }}</span><h3>{{ p['name'] }}</h3><div class="price">{{ p['price'] }}</div><p class="monthly">+ {{ p['monthly'] }}</p><ul>{% for item in p['items'] %}<li>✓ {{ item }}</li>{% endfor %}</ul><a class="btn {% if p['name']=='Pro' %}gold{% else %}outlineDark{% endif %}" href="{{ url_for('contact') }}?plan={{ p['name']|urlencode }}">Ask about {{ p['name'] }}</a></article>{% endfor %}</div></section>
-<section class="section split"><div><p class="eyebrow">How it works</p><h2>From idea to live website</h2><ol class="steps"><li>We choose the best demo for your business.</li><li>You send logo, photos, prices and contact details.</li><li>We build the website and connect WhatsApp / forms.</li><li>You go live and start collecting enquiries.</li></ol></div><div class="glass"><h3>English + Spanish ready</h3><p>Your site can speak to tourists and local customers at the same time.</p><h3>Future upgrades</h3><p>Online payments, dashboards, extra locations and full booking systems can be added later.</p></div></section>
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero-saas">
+  <div class="hero-copy">
+    <span class="eyebrow">Duquesa · Costa del Sol · Local business growth</span>
+    <h1><span>Premium digital systems</span> for businesses that want more bookings.</h1>
+    <p>We build elegant websites, booking pages, WhatsApp flows and simple admin tools for apartments, restaurants, cafés, taxis, boat trips and local services.</p>
+    <div class="hero-actions"><a href="#demos" class="btn primary">View Demos</a><a href="#pricing" class="btn ghost">See Pricing</a></div>
+  </div>
+  <div class="hero-panel">
+    <div class="glass-card main-card">
+      <div class="mock-browser"><span></span><span></span><span></span></div>
+      <h3>Local Business Command Centre</h3>
+      <div class="metric-grid"><div><b>Booking</b><small>forms</small></div><div><b>WhatsApp</b><small>messages</small></div><div><b>Admin</b><small>dashboard</small></div><div><b>EN/ES</b><small>language</small></div></div>
+    </div>
+    <div class="float-card one">🚐 Transfer request</div>
+    <div class="float-card two">🍽️ Table booking</div>
+    <div class="float-card three">🏖️ Apartment enquiry</div>
+  </div>
+</section>
+
+<section class="trust-strip">
+  <div><b>1 website</b><span>built once</span></div><div><b>Many niches</b><span>adapted fast</span></div><div><b>Monthly support</b><span>simple fee</span></div><div><b>Local focus</b><span>Duquesa area</span></div>
+</section>
+
+<section id="services" class="section light">
+  <div class="section-head"><span class="eyebrow">What we build</span><h2>Digital tools for real local businesses.</h2><p>Not just a pretty page — a system that helps customers contact, book and trust the business faster.</p></div>
+  <div class="service-grid">
+    {% for s in services %}
+    <article class="service-tile">
+      <div class="icon">{{ s.icon }}</div><h3>{{ s.title }}</h3><p>{{ s.desc }}</p><a href="{{ url_for('demo', slug=s.slug) }}">Open demo →</a>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="demos" class="section dark">
+  <div class="section-head"><span class="eyebrow">Demo showroom</span><h2>Show clients what they can buy.</h2><p>Each demo is designed as a sales example: apartment, restaurant, taxi, boat, cleaning, painting and mechanic.</p></div>
+  <div class="demo-showcase">
+    {% for s in services %}
+    <a class="demo-card" href="{{ url_for('demo', slug=s.slug) }}">
+      <img src="{{ s.image }}" alt="{{ s.title }}">
+      <div><span>{{ s.icon }}</span><h3>{{ s.title }}</h3><p>{{ s.desc }}</p></div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="pricing" class="section pricing-zone">
+  <div class="section-head"><span class="eyebrow">Simple pricing</span><h2>Setup fee + monthly support.</h2><p>The setup fee builds the website. The monthly fee covers hosting guidance, support, small edits, security updates and keeping the site running.</p></div>
+  <div class="pricing-grid">
+    {% for p in plans %}
+    <article class="price-card {% if p.name == 'Pro' %}featured{% endif %}">
+      <span class="pill">{{ p.tag }}</span><h3>{{ p.name }}</h3><p>{{ p.summary }}</p><div class="price"><b>{{ p.setup }}</b><span>setup</span></div><div class="monthly">{{ p.monthly }}</div>
+      <ul>{% for item in p['features'] %}<li>{{ item }}</li>{% endfor %}</ul>
+      <a class="btn {% if p.name == 'Pro' %}primary{% else %}outline{% endif %}" href="{{ url_for('contact') }}?plan={{ p.name }}">Ask about {{ p.name }}</a>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section process">
+  <div class="section-head"><span class="eyebrow">How it works</span><h2>From idea to live website.</h2></div>
+  <div class="steps"><div><b>01</b><h3>Choose demo</h3><p>The client picks a style and service type.</p></div><div><b>02</b><h3>Add content</h3><p>Photos, prices, logo, phone and services.</p></div><div><b>03</b><h3>Go live</h3><p>Website on Render/GitHub with WhatsApp and forms.</p></div></div>
+</section>
 {% endblock %}
