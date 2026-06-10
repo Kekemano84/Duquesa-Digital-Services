@@ -19,16 +19,60 @@
   </div>
 </section>
 
-<section class="full-demo-intro">
+<section class="demo-business-bar">
+  {% if demo.slug == 'apartment' %}
+    <div><b>€120</b><span>{{ 'per night' if lang == 'en' else 'por noche' }}</span></div>
+    <div><b>4</b><span>{{ 'guests max' if lang == 'en' else 'huéspedes máx.' }}</span></div>
+    <div><b>14:00</b><span>{{ 'check-in' if lang == 'en' else 'entrada' }}</span></div>
+    <div><b>10:00</b><span>{{ 'check-out' if lang == 'en' else 'salida' }}</span></div>
+  {% elif demo.slug == 'restaurant' %}
+    <div><b>12:00-23:00</b><span>{{ 'open daily' if lang == 'en' else 'abierto diario' }}</span></div>
+    <div><b>4.8★</b><span>{{ 'guest rating' if lang == 'en' else 'valoración' }}</span></div>
+    <div><b>38</b><span>{{ 'tables' if lang == 'en' else 'mesas' }}</span></div>
+    <div><b>WhatsApp</b><span>{{ 'reservations' if lang == 'en' else 'reservas' }}</span></div>
+  {% elif demo.slug == 'cafe' %}
+    <div><b>08:00-18:00</b><span>{{ 'opening hours' if lang == 'en' else 'horario' }}</span></div>
+    <div><b>€4.50</b><span>{{ 'coffee deal' if lang == 'en' else 'oferta café' }}</span></div>
+    <div><b>Fresh</b><span>{{ 'cakes daily' if lang == 'en' else 'tartas diarias' }}</span></div>
+    <div><b>Takeaway</b><span>{{ 'available' if lang == 'en' else 'disponible' }}</span></div>
+  {% elif demo.slug == 'taxi' %}
+    <div><b>€120</b><span>{{ 'Malaga transfer' if lang == 'en' else 'traslado Málaga' }}</span></div>
+    <div><b>6</b><span>{{ 'passengers' if lang == 'en' else 'pasajeros' }}</span></div>
+    <div><b>24/7</b><span>{{ 'on request' if lang == 'en' else 'bajo solicitud' }}</span></div>
+    <div><b>Vito</b><span>{{ 'van style' if lang == 'en' else 'tipo van' }}</span></div>
+  {% elif demo.slug == 'boat' %}
+    <div><b>€120</b><span>{{ 'dolphin trip' if lang == 'en' else 'delfines' }}</span></div>
+    <div><b>€220</b><span>{{ 'sunset cruise' if lang == 'en' else 'atardecer' }}</span></div>
+    <div><b>2-4h</b><span>{{ 'trip length' if lang == 'en' else 'duración' }}</span></div>
+    <div><b>Private</b><span>{{ 'charter' if lang == 'en' else 'charter' }}</span></div>
+  {% elif demo.slug == 'cleaning' %}
+    <div><b>€45</b><span>{{ 'from price' if lang == 'en' else 'desde' }}</span></div>
+    <div><b>Airbnb</b><span>{{ 'changeover' if lang == 'en' else 'cambio' }}</span></div>
+    <div><b>24h</b><span>{{ 'quote reply' if lang == 'en' else 'respuesta' }}</span></div>
+    <div><b>Deep</b><span>{{ 'cleaning' if lang == 'en' else 'limpieza' }}</span></div>
+  {% elif demo.slug == 'painting' %}
+    <div><b>Free</b><span>{{ 'estimate' if lang == 'en' else 'presupuesto' }}</span></div>
+    <div><b>Interior</b><span>{{ 'painting' if lang == 'en' else 'pintura' }}</span></div>
+    <div><b>Exterior</b><span>{{ 'painting' if lang == 'en' else 'exterior' }}</span></div>
+    <div><b>Gallery</b><span>{{ 'projects' if lang == 'en' else 'proyectos' }}</span></div>
+  {% else %}
+    <div><b>Diagnostics</b><span>{{ 'available' if lang == 'en' else 'disponible' }}</span></div>
+    <div><b>Service</b><span>{{ 'booking' if lang == 'en' else 'reserva' }}</span></div>
+    <div><b>Brakes</b><span>{{ 'and tyres' if lang == 'en' else 'y neumáticos' }}</span></div>
+    <div><b>WhatsApp</b><span>{{ 'repair enquiry' if lang == 'en' else 'consulta' }}</span></div>
+  {% endif %}
+</section>
+
+<section class="full-demo-intro compact">
   <div>
     <p class="eyebrow">{{ 'ACTUAL DEMO PAGE' if lang == 'en' else 'PÁGINA DEMO REAL' }}</p>
     <h2>{{ hero }}</h2>
     <p>{{ sub }}</p>
   </div>
-  <div class="phone-preview">
-    <div class="phone-top"></div>
+  <div class="mini-website-preview">
+    <div class="preview-nav"><span>{{ name }}</span><span>Menu</span><span>Contact</span></div>
     <img src="{{ demo.img }}" alt="{{ name }}">
-    <div class="phone-content">
+    <div class="preview-content">
       <h3>{{ name }}</h3>
       <p>{{ desc }}</p>
       <button>{{ 'Send enquiry' if lang == 'en' else 'Enviar consulta' }}</button>
@@ -42,7 +86,7 @@
   {% endfor %}
 </section>
 
-<section class="demo-sections">
+<section class="demo-sections compact">
   {% for s in demo.sections %}
   <article>
     <span class="number">0{{ loop.index }}</span>
@@ -52,64 +96,87 @@
   {% endfor %}
 </section>
 
-{% if demo.slug == 'restaurant' %}
-<section class="business-demo restaurant-style">
+<section class="business-demo working-demo">
   <div>
-    <p class="eyebrow">{{ 'SAMPLE MENU' if lang == 'en' else 'MENÚ DE EJEMPLO' }}</p>
-    <h2>{{ 'Menu, table booking and special offers' if lang == 'en' else 'Menú, reservas y ofertas especiales' }}</h2>
-    <p>{{ 'Perfect for restaurants that want a beautiful mobile menu and quick reservation enquiries.' if lang == 'en' else 'Perfecto para restaurantes que quieren un menú móvil bonito y reservas rápidas.' }}</p>
+    <p class="eyebrow">{{ 'LIVE WEBSITE CONTENT' if lang == 'en' else 'CONTENIDO WEB REAL' }}</p>
+    {% if demo.slug == 'apartment' %}
+      <h2>{{ 'Apartment booking page' if lang == 'en' else 'Página de reserva de apartamento' }}</h2>
+      <p>{{ 'Shows price, rules, availability request and extra services.' if lang == 'en' else 'Muestra precio, normas, disponibilidad y servicios extra.' }}</p>
+    {% elif demo.slug == 'restaurant' %}
+      <h2>{{ 'Menu and table booking' if lang == 'en' else 'Menú y reserva de mesa' }}</h2>
+      <p>{{ 'A restaurant can show dishes, opening hours and receive reservations.' if lang == 'en' else 'Un restaurante puede mostrar platos, horario y recibir reservas.' }}</p>
+    {% elif demo.slug == 'cafe' %}
+      <h2>{{ 'Café offers and opening hours' if lang == 'en' else 'Ofertas y horarios de cafetería' }}</h2>
+      <p>{{ 'Daily deals, coffee menu, breakfast offers and quick contact.' if lang == 'en' else 'Ofertas diarias, menú de café, desayunos y contacto rápido.' }}</p>
+    {% elif demo.slug == 'taxi' %}
+      <h2>{{ 'Transfer price table' if lang == 'en' else 'Tabla de precios de traslado' }}</h2>
+      <p>{{ 'Customers see routes and send the right transfer request.' if lang == 'en' else 'Los clientes ven rutas y envían la solicitud correcta.' }}</p>
+    {% elif demo.slug == 'boat' %}
+      <h2>{{ 'Boat trip packages' if lang == 'en' else 'Paquetes de barco' }}</h2>
+      <p>{{ 'Dolphin watching, sunset cruise and private charter offers.' if lang == 'en' else 'Delfines, atardecer y charter privado.' }}</p>
+    {% elif demo.slug == 'cleaning' %}
+      <h2>{{ 'Cleaning quote packages' if lang == 'en' else 'Paquetes de limpieza' }}</h2>
+      <p>{{ 'Property cleaning, deep clean, Airbnb changeover and quote form.' if lang == 'en' else 'Limpieza, limpieza profunda, cambio Airbnb y presupuesto.' }}</p>
+    {% elif demo.slug == 'painting' %}
+      <h2>{{ 'Painting estimate page' if lang == 'en' else 'Página de presupuesto de pintura' }}</h2>
+      <p>{{ 'Interior, exterior, repairs and project gallery for trust.' if lang == 'en' else 'Interior, exterior, reparaciones y galería para confianza.' }}</p>
+    {% else %}
+      <h2>{{ 'Garage service booking' if lang == 'en' else 'Reserva de servicio de taller' }}</h2>
+      <p>{{ 'Diagnostics, tyres, brakes, servicing and repair enquiries.' if lang == 'en' else 'Diagnosis, neumáticos, frenos, mantenimiento y reparaciones.' }}</p>
+    {% endif %}
   </div>
-  <div class="menu-list">
-    <article><b>{{ 'Seafood Paella' if lang == 'en' else 'Paella de Marisco' }}</b><span>€18.90</span><p>{{ 'Fresh seafood, saffron rice and Mediterranean herbs.' if lang == 'en' else 'Marisco fresco, arroz con azafrán y hierbas mediterráneas.' }}</p></article>
-    <article><b>{{ 'Grilled Sea Bass' if lang == 'en' else 'Lubina a la Plancha' }}</b><span>€22.00</span><p>{{ 'Served with lemon potatoes and seasonal salad.' if lang == 'en' else 'Servida con patatas al limón y ensalada de temporada.' }}</p></article>
-    <article><b>{{ 'Tapas Selection' if lang == 'en' else 'Selección de Tapas' }}</b><span>€14.50</span><p>{{ 'Perfect for sharing with wine or sangria.' if lang == 'en' else 'Perfecto para compartir con vino o sangría.' }}</p></article>
-  </div>
-</section>
-{% elif demo.slug == 'boat' %}
-<section class="business-demo boat-style">
-  <div>
-    <p class="eyebrow">{{ 'BOAT PACKAGES' if lang == 'en' else 'PAQUETES DE BARCO' }}</p>
-    <h2>{{ 'Dolphin watching and sunset cruises' if lang == 'en' else 'Delfines y paseos al atardecer' }}</h2>
-    <p>{{ 'A proper boat operator page with experiences, prices and booking request buttons.' if lang == 'en' else 'Una página real para barcos con experiencias, precios y botones de reserva.' }}</p>
-  </div>
-  <div class="offer-grid">
-    <article>🐬 <b>{{ 'Dolphin Watching' if lang == 'en' else 'Avistamiento de Delfines' }}</b><p>{{ 'From €120' if lang == 'en' else 'Desde €120' }}</p></article>
-    <article>🌅 <b>{{ 'Sunset Cruise' if lang == 'en' else 'Paseo al Atardecer' }}</b><p>{{ 'From €220' if lang == 'en' else 'Desde €220' }}</p></article>
-    <article>🎣 <b>{{ 'Fishing Experience' if lang == 'en' else 'Experiencia de Pesca' }}</b><p>{{ 'From €220' if lang == 'en' else 'Desde €220' }}</p></article>
-  </div>
-</section>
-{% elif demo.slug == 'taxi' %}
-<section class="business-demo taxi-style">
-  <div>
-    <p class="eyebrow">{{ 'TRANSFER ROUTES' if lang == 'en' else 'RUTAS DE TRASLADO' }}</p>
-    <h2>{{ 'Private van transfer with clear prices' if lang == 'en' else 'Traslado privado con precios claros' }}</h2>
-    <p>{{ 'For airport pickups, local trips, golf transfers and tourist transport.' if lang == 'en' else 'Para aeropuertos, viajes locales, golf y transporte turístico.' }}</p>
-  </div>
-  <div class="price-routes">
-    <article><b>{{ 'Malaga Airport → Duquesa' if lang == 'en' else 'Aeropuerto Málaga → Duquesa' }}</b><span>{{ 'From €120' if lang == 'en' else 'Desde €120' }}</span></article>
-    <article><b>{{ 'Gibraltar Airport → Duquesa' if lang == 'en' else 'Aeropuerto Gibraltar → Duquesa' }}</b><span>{{ 'From €90' if lang == 'en' else 'Desde €90' }}</span></article>
-    <article><b>{{ 'Local Taxi Trip' if lang == 'en' else 'Taxi Local' }}</b><span>{{ 'From €40' if lang == 'en' else 'Desde €40' }}</span></article>
-  </div>
-</section>
-{% else %}
-<section class="business-demo">
-  <div>
-    <p class="eyebrow">{{ 'SERVICE PAGE' if lang == 'en' else 'PÁGINA DE SERVICIO' }}</p>
-    <h2>{{ 'Clear services, gallery and fast enquiry' if lang == 'en' else 'Servicios claros, galería y consulta rápida' }}</h2>
-    <p>{{ 'This demo shows how a real local service website could present offers and receive enquiries.' if lang == 'en' else 'Esta demo muestra cómo una empresa local puede presentar servicios y recibir consultas.' }}</p>
-  </div>
-  <div class="offer-grid">
-    {% for c in cards[:3] %}
-    <article>{{ demo.icon }} <b>{{ c }}</b><p>{{ 'Available on request' if lang == 'en' else 'Disponible bajo solicitud' }}</p></article>
-    {% endfor %}
-  </div>
-</section>
-{% endif %}
 
-<section id="demo-action" class="demo-action">
+  <div class="service-table">
+    {% if demo.slug == 'restaurant' %}
+      <article><b>{{ 'Seafood Paella' if lang == 'en' else 'Paella de Marisco' }}</b><span>€18.90</span></article>
+      <article><b>{{ 'Grilled Sea Bass' if lang == 'en' else 'Lubina a la Plancha' }}</b><span>€22.00</span></article>
+      <article><b>{{ 'Tapas Selection' if lang == 'en' else 'Selección de Tapas' }}</b><span>€14.50</span></article>
+    {% elif demo.slug == 'taxi' %}
+      <article><b>{{ 'Malaga Airport → Duquesa' if lang == 'en' else 'Aeropuerto Málaga → Duquesa' }}</b><span>€120</span></article>
+      <article><b>{{ 'Gibraltar Airport → Duquesa' if lang == 'en' else 'Aeropuerto Gibraltar → Duquesa' }}</b><span>€90</span></article>
+      <article><b>{{ 'Local trip' if lang == 'en' else 'Viaje local' }}</b><span>€40+</span></article>
+    {% elif demo.slug == 'boat' %}
+      <article><b>{{ 'Dolphin Watching' if lang == 'en' else 'Avistamiento de Delfines' }}</b><span>€120</span></article>
+      <article><b>{{ 'Sunset Cruise' if lang == 'en' else 'Paseo al Atardecer' }}</b><span>€220</span></article>
+      <article><b>{{ 'Private Charter' if lang == 'en' else 'Charter Privado' }}</b><span>€300+</span></article>
+    {% elif demo.slug == 'cafe' %}
+      <article><b>{{ 'Coffee + Croissant' if lang == 'en' else 'Café + Croissant' }}</b><span>€4.50</span></article>
+      <article><b>{{ 'Breakfast Deal' if lang == 'en' else 'Oferta Desayuno' }}</b><span>€8.90</span></article>
+      <article><b>{{ 'Cake Slice' if lang == 'en' else 'Porción de Tarta' }}</b><span>€3.90</span></article>
+    {% elif demo.slug == 'cleaning' %}
+      <article><b>{{ 'Apartment Cleaning' if lang == 'en' else 'Limpieza Apartamento' }}</b><span>€45+</span></article>
+      <article><b>{{ 'Deep Cleaning' if lang == 'en' else 'Limpieza Profunda' }}</b><span>€120+</span></article>
+      <article><b>{{ 'Airbnb Changeover' if lang == 'en' else 'Cambio Airbnb' }}</b><span>€60+</span></article>
+    {% elif demo.slug == 'painting' %}
+      <article><b>{{ 'Room Painting' if lang == 'en' else 'Pintura Habitación' }}</b><span>Quote</span></article>
+      <article><b>{{ 'Exterior Wall' if lang == 'en' else 'Pared Exterior' }}</b><span>Quote</span></article>
+      <article><b>{{ 'Small Repairs' if lang == 'en' else 'Pequeñas Reparaciones' }}</b><span>Quote</span></article>
+    {% elif demo.slug == 'apartment' %}
+      <article><b>{{ 'Nightly rate' if lang == 'en' else 'Precio por noche' }}</b><span>€120</span></article>
+      <article><b>{{ 'Security deposit' if lang == 'en' else 'Depósito' }}</b><span>€100</span></article>
+      <article><b>{{ 'Cleaning fee' if lang == 'en' else 'Limpieza' }}</b><span>Free</span></article>
+    {% else %}
+      <article><b>{{ 'Diagnostics' if lang == 'en' else 'Diagnosis' }}</b><span>Quote</span></article>
+      <article><b>{{ 'Oil Service' if lang == 'en' else 'Cambio Aceite' }}</b><span>Quote</span></article>
+      <article><b>{{ 'Brakes / Tyres' if lang == 'en' else 'Frenos / Neumáticos' }}</b><span>Quote</span></article>
+    {% endif %}
+  </div>
+</section>
+
+<section class="reviews-section">
+  <p class="eyebrow">{{ 'REVIEWS PREVIEW' if lang == 'en' else 'VISTA DE RESEÑAS' }}</p>
+  <h2>{{ 'Trust section included' if lang == 'en' else 'Sección de confianza incluida' }}</h2>
+  <div class="reviews-grid">
+    <article><b>★★★★★</b><p>{{ 'Very easy to contact and book. The website looks professional.' if lang == 'en' else 'Muy fácil contactar y reservar. La web se ve profesional.' }}</p><span>— Maria</span></article>
+    <article><b>★★★★★</b><p>{{ 'Clear prices and fast WhatsApp response.' if lang == 'en' else 'Precios claros y respuesta rápida por WhatsApp.' }}</p><span>— James</span></article>
+    <article><b>★★★★★</b><p>{{ 'Simple, modern and perfect on mobile.' if lang == 'en' else 'Sencilla, moderna y perfecta en móvil.' }}</p><span>— Carlos</span></article>
+  </div>
+</section>
+
+<section id="demo-action" class="demo-action compact">
   <div>
     <p class="eyebrow">{{ 'CUSTOMER ACTION' if lang == 'en' else 'ACCIÓN DEL CLIENTE' }}</p>
-    <h2>{{ 'Booking / enquiry form preview' if lang == 'en' else 'Vista del formulario de reserva / consulta' }}</h2>
+    <h2>{{ 'Booking / enquiry form' if lang == 'en' else 'Formulario de reserva / consulta' }}</h2>
     <p>{{ 'This can later send email notifications and save enquiries in an admin dashboard.' if lang == 'en' else 'Más adelante puede enviar emails y guardar consultas en un panel admin.' }}</p>
   </div>
   <form class="demo-form">

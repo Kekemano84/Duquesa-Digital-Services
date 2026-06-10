@@ -256,3 +256,44 @@ textarea{min-height:130px}
 .demo-action h2{
   font-size:clamp(2.3rem,4vw,4.2rem)!important;
 }
+
+/* v11: more complete working demo websites + smaller typography */
+h1{font-size:clamp(2.6rem,5vw,5rem)!important}
+h2{font-size:clamp(2rem,3.4vw,3.6rem)!important}
+.live-demo-overlay h1{font-size:clamp(2.8rem,5vw,4.8rem)!important}
+.form-card h1{font-size:clamp(2.3rem,4vw,4rem)!important}
+.hero{min-height:66vh!important;padding-top:4%!important;padding-bottom:4%!important}
+.full-demo-intro.compact,.demo-action.compact{padding:58px 7%!important}
+.demo-sections.compact{padding:58px 7%!important}
+.demo-business-bar{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:28px 7%;
+  background:linear-gradient(135deg,#c1121f,#ffb000);
+}
+.demo-business-bar div{
+  background:white;border-radius:22px;padding:22px;box-shadow:0 14px 35px rgba(0,0,0,.12);
+}
+.demo-business-bar b{display:block;font-size:1.5rem}
+.demo-business-bar span{color:#5d6677;font-weight:800}
+.mini-website-preview{
+  background:#fff;border-radius:30px;overflow:hidden;box-shadow:var(--shadow);border:1px solid #f1ddbc;
+}
+.preview-nav{display:flex;justify-content:space-between;gap:10px;padding:16px 20px;background:#07172d;color:white;font-weight:900}
+.mini-website-preview img{width:100%;height:260px;object-fit:cover}
+.preview-content{padding:24px}
+.preview-content h3{font-size:1.8rem}
+.preview-content button{background:linear-gradient(135deg,#c1121f,#ffb000);color:white;border:0;border-radius:14px;padding:14px 18px;font-weight:900}
+.working-demo{grid-template-columns:1fr 1fr!important}
+.service-table{display:grid;gap:16px}
+.service-table article{
+  display:flex;justify-content:space-between;align-items:center;gap:20px;background:white;color:#07172d;
+  padding:22px;border-radius:18px;box-shadow:0 12px 28px rgba(0,0,0,.12)
+}
+.service-table span{color:#c1121f;font-weight:950;font-size:1.2rem}
+.reviews-section{padding:58px 7%;background:#fff}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px}
+.reviews-grid article{background:#fff8e8;border:1px solid #f1ddbc;border-radius:22px;padding:24px;box-shadow:0 12px 28px rgba(9,20,38,.06)}
+.reviews-grid b{color:#ffb000}
+.reviews-grid span{font-weight:900;color:#c1121f}
+@media(max-width:900px){
+  .demo-business-bar,.reviews-grid,.working-demo{grid-template-columns:1fr!important}
+}
