@@ -175,3 +175,84 @@ textarea{min-height:130px}
 .site-header{
   background:rgba(255,250,241,.95);
 }
+
+.full-demo-intro{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;
+  padding:85px 7%;background:linear-gradient(135deg,#fff8e8,#fff);
+}
+.phone-preview{
+  max-width:420px;margin:auto;background:#111;border-radius:44px;padding:18px;box-shadow:var(--shadow);
+}
+.phone-top{width:90px;height:8px;background:#333;border-radius:999px;margin:0 auto 14px}
+.phone-preview img{width:100%;height:250px;object-fit:cover;border-radius:28px}
+.phone-content{background:white;border-radius:28px;margin-top:12px;padding:24px}
+.phone-content button{background:linear-gradient(135deg,var(--red),var(--sun));color:white;border:0;padding:14px 18px;border-radius:14px;font-weight:900}
+.demo-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:35px 7%;background:linear-gradient(135deg,#c1121f,#ffb000);
+}
+.demo-strip article{background:rgba(255,255,255,.92);border-radius:22px;padding:20px;display:flex;align-items:center;gap:12px;font-weight:900}
+.demo-strip span{font-size:1.8rem}
+.demo-sections{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:80px 7%;background:#fff;
+}
+.demo-sections article{border:1px solid #f1ddbc;border-radius:28px;padding:30px;background:#fffaf1;box-shadow:0 14px 35px rgba(9,20,38,.06)}
+.number{display:inline-block;color:var(--red);font-weight:950;letter-spacing:4px;margin-bottom:20px}
+.business-demo{
+  display:grid;grid-template-columns:.9fr 1.1fr;gap:45px;align-items:center;padding:85px 7%;background:linear-gradient(135deg,var(--navy),var(--blue));color:white;
+}
+.business-demo .menu-list article,.business-demo .offer-grid article,.business-demo .price-routes article{background:white;color:var(--ink)}
+.demo-action{
+  display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:start;padding:85px 7%;background:#fff8e8;
+}
+.demo-form{background:white;border:1px solid #f1ddbc;border-radius:28px;padding:30px;box-shadow:var(--shadow)}
+.demo-form input,.demo-form textarea{width:100%;margin:8px 0;padding:16px;border:1px solid #dde3ee;border-radius:14px}
+@media(max-width:900px){
+  .full-demo-intro,.business-demo,.demo-action{grid-template-columns:1fr}
+  .demo-strip,.demo-sections{grid-template-columns:1fr}
+}
+
+/* v10 cleaner demo cards and image presentation */
+.demos h2{
+  font-size:clamp(2.4rem,4.8vw,4.8rem)!important;
+  margin-bottom:28px;
+}
+.demo-card{
+  background:#ffffff!important;
+  color:#07172d!important;
+  border:0!important;
+  box-shadow:0 18px 45px rgba(0,0,0,.18)!important;
+}
+.demo-card img{
+  height:260px!important;
+  filter:saturate(1.05) contrast(1.02);
+}
+.demo-card div{
+  background:#ffffff!important;
+}
+.demo-card h3{
+  color:#07172d!important;
+}
+.demo-card p{
+  color:#465064!important;
+}
+.demo-card .small-link{
+  color:#c1121f!important;
+}
+.demos{
+  background:linear-gradient(135deg,#fff4df,#fffaf1)!important;
+  color:#07172d!important;
+}
+.live-demo-hero{
+  min-height:68vh!important;
+}
+.live-demo-hero:before{
+  background:linear-gradient(90deg,rgba(7,23,45,.82),rgba(193,18,31,.22))!important;
+}
+.live-demo-overlay h1{
+  font-size:clamp(3rem,6vw,5.8rem)!important;
+}
+.full-demo-intro h2,
+.business-demo h2,
+.demo-action h2{
+  font-size:clamp(2.3rem,4vw,4.2rem)!important;
+}
