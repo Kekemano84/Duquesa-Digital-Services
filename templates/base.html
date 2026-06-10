@@ -1,1 +1,38 @@
-<!doctype html><html lang="{{ lang }}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Duquesa Digital Services</title><link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"><script defer src="{{ url_for('static', filename='js/main.js') }}"></script></head><body><header class="topbar"><a class="brand" href="{{ url_for('index', lang=lang) }}"><span class="spark">D</span><span>DUQUESA<span>DIGITAL</span></span></a><button class="menu" id="menuBtn">☰</button><nav id="nav"><a href="{{ url_for('index', lang=lang) }}#services">{{ 'Services' if lang=='en' else 'Servicios' }}</a><a href="{{ url_for('index', lang=lang) }}#demos">Demos</a><a href="{{ url_for('index', lang=lang) }}#pricing">{{ 'Pricing' if lang=='en' else 'Precios' }}</a><a href="{{ url_for('register', lang=lang) }}">{{ 'Try Demo' if lang=='en' else 'Probar demo' }}</a><a href="{{ url_for('contact', lang=lang) }}">{{ 'Contact' if lang=='en' else 'Contacto' }}</a><a class="lang" href="{{ request.path }}?lang=en">EN</a><a class="lang" href="{{ request.path }}?lang=es">ES</a></nav></header>{% with messages=get_flashed_messages() %}{% if messages %}<div class="flash">{{ messages[0] }}</div>{% endif %}{% endwith %}{% block content %}{% endblock %}<a class="wa" href="https://wa.me/447584724809?text=Hello%2C%20I%20would%20like%20to%20ask%20about%20Duquesa%20Digital%20Services" target="_blank">WhatsApp</a><footer><div class="brand mini"><span class="spark">D</span><span>DUQUESA<span>DIGITAL</span></span></div><p>Duquesa, Spain · seagoing8888@gmail.com · +44 7584 724809</p><p>© 2026 Duquesa Digital Services</p><a class="tiny-admin" href="{{ url_for('admin', lang=lang) }}">Admin preview</a></footer></body></html>
+
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Duquesa Digital Services</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="{{ url_for('index', lang=lang) }}">
+    <span class="brand-mark">D</span>
+    <span><b>DUQUESA</b><small>DIGITAL</small></span>
+  </a>
+  <nav class="nav">
+    <a href="{{ url_for('index', lang=lang) }}#services">{{ t.nav_services }}</a>
+    <a href="{{ url_for('index', lang=lang) }}#demos">{{ t.nav_demos }}</a>
+    <a href="{{ url_for('index', lang=lang) }}#pricing">{{ t.nav_pricing }}</a>
+    <a href="{{ url_for('try_demo', lang=lang) }}">{{ t.nav_try }}</a>
+    <a href="{{ url_for('contact', lang=lang) }}">{{ t.nav_contact }}</a>
+    <a class="lang" href="?lang=en">EN</a>
+    <a class="lang" href="?lang=es">ES</a>
+  </nav>
+</header>
+<main>
+{% block content %}{% endblock %}
+</main>
+<a class="wa-float" href="https://wa.me/{{ whatsapp }}?text=Hello%2C%20I%20would%20like%20to%20ask%20about%20Duquesa%20Digital%20Services." target="_blank">WhatsApp</a>
+<footer class="footer">
+  <div class="brand footer-brand"><span class="brand-mark">D</span><span><b>DUQUESA</b><small>DIGITAL</small></span></div>
+  <p>Duquesa, Marbella & Costa del Sol · seagoing8888@gmail.com</p>
+  <p>© 2026 Duquesa Digital Services</p>
+</footer>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

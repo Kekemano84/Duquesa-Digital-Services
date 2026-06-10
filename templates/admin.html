@@ -1,1 +1,18 @@
-{% extends 'base.html' %}{% block content %}<section class="section white"><p class="eyebrow coral">ADMIN PREVIEW</p><h1>Sales Admin Preview</h1><p class="lead dark">This is a simple presentation admin page. Later this can become a real private owner area.</p><div class="admin-grid"><div><b>{{ demos|length }}</b><span>demo categories</span></div><div><b>{{ plans|length }}</b><span>plans</span></div><div><b>{{ enquiries|length }}</b><span>enquiries</span></div></div><h2>Demo enquiries</h2>{% if enquiries %}{% for e in enquiries %}<div class="row"><span>{{ e.name }}</span><span>{{ e.business }}</span><span>{{ e.service }}</span><span>{{ e.plan }}</span><span>{{ e.phone }}</span></div>{% endfor %}{% else %}<p class="muted">No enquiries yet. Submit the contact form to test it.</p>{% endif %}</section>{% endblock %}
+
+{% extends "base.html" %}
+{% block content %}
+<section class="form-section">
+  <div class="form-card wide">
+    <p class="eyebrow">HIDDEN ADMIN PREVIEW</p>
+    <h1>{{ t.admin_title }}</h1>
+    <p>{{ t.admin_text }}</p>
+    <div class="admin-grid">
+      <div><b>{{ demos|length }}</b><span>demo categories</span></div>
+      <div><b>{{ plans|length }}</b><span>plans</span></div>
+      <div><b>EN/ES</b><span>language ready</span></div>
+      <div><b>WhatsApp</b><span>message ready</span></div>
+    </div>
+    <p class="muted">This page is not linked in the main navigation. Open manually with /admin.</p>
+  </div>
+</section>
+{% endblock %}

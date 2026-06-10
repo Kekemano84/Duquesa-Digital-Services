@@ -1,1 +1,1 @@
-const btn=document.getElementById('menuBtn');const nav=document.getElementById('nav');if(btn){btn.addEventListener('click',()=>nav.classList.toggle('show'))}
+console.log('Duquesa Digital Services v6 loaded');

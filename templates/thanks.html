@@ -1,0 +1,12 @@
+
+{% extends "base.html" %}
+{% block content %}
+<section class="form-section">
+  <div class="form-card">
+    <p class="eyebrow">THANK YOU</p>
+    <h1>Request received</h1>
+    <p>This is a demo confirmation. Later this can save enquiries to a database and send email notifications.</p>
+    <a class="btn primary" href="{{ url_for('index', lang=lang) }}">Back home</a>
+  </div>
+</section>
+{% endblock %}
