@@ -3,10 +3,10 @@
   --navy:#07172d;
   --deep:#102a5c;
   --blue:#214a9a;
-  --sun:#f77f00;
-  --red:#e63946;
-  --yellow:#ffd166;
-  --teal:#00b4a0;
+  --sun:#ffb000;
+  --red:#c1121f;
+  --yellow:#ffd60a;
+  --teal:#00a896;
   --sand:#fff4df;
   --paper:#ffffff;
   --ink:#091426;
@@ -22,9 +22,11 @@ h2{font-size:clamp(2.4rem,5vw,5rem)}
 p{font-size:1.08rem;line-height:1.65}
 a{text-decoration:none;color:inherit}
 .site-header{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:20px 7%;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(9,20,38,.08)}
-.brand{display:flex;align-items:center;gap:14px;font-weight:900;letter-spacing:7px}
-.brand small{display:block;color:var(--red);letter-spacing:7px;font-size:.75rem}
-.brand-mark{display:grid;place-items:center;width:68px;height:68px;border-radius:22px;background:linear-gradient(135deg,var(--red),var(--sun) 45%,var(--teal));color:white;font-family:Georgia,serif;font-size:2.7rem;font-weight:900;box-shadow:0 12px 35px rgba(230,57,70,.25)}
+.brand{display:flex;align-items:center;gap:14px;font-weight:900;letter-spacing:6px}
+.brand small{display:block;color:var(--red);letter-spacing:6px;font-size:.75rem}
+.brand-mark{display:grid;place-items:center;width:68px;height:68px;border-radius:22px;background:
+    radial-gradient(circle at 25% 25%, rgba(255,214,10,.95), transparent 28%),
+    linear-gradient(135deg,#c1121f 0%,#ffb000 52%,#00a896 100%);color:white;font-family:Georgia,serif;font-size:1.85rem;font-weight:900;box-shadow:0 12px 35px rgba(230,57,70,.25)}
 .nav{display:flex;align-items:center;gap:28px;font-weight:900;font-size:1.02rem}
 .nav a:hover{color:var(--red)}
 .lang{padding:12px 17px;background:#f3f5f8;border-radius:999px}
@@ -146,4 +148,30 @@ textarea{min-height:130px}
 @media(max-width:900px){
   .demo-page{grid-template-columns:1fr}
   .fake-booking,.offer-grid,.inline-form{grid-template-columns:1fr}
+}
+
+.brand-mark{
+  position:relative;
+  letter-spacing:-4px;
+  border:3px solid rgba(255,255,255,.75);
+}
+.brand-mark:after{
+  content:"☀";
+  position:absolute;
+  right:-8px;
+  top:-13px;
+  font-size:18px;
+  color:#ffd60a;
+  text-shadow:0 2px 8px rgba(0,0,0,.25);
+}
+.brand b{
+  font-size:1.05rem;
+}
+.brand small{
+  color:#c1121f;
+  font-size:.62rem;
+  letter-spacing:3px;
+}
+.site-header{
+  background:rgba(255,250,241,.95);
 }
