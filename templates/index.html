@@ -1,66 +1,7 @@
-{% extends 'base.html' %}
-{% block content %}
-<section class="hero-saas">
-  <div class="hero-copy">
-    <span class="eyebrow">Duquesa · Costa del Sol · Local business growth</span>
-    <h1><span>Premium digital systems</span> for businesses that want more bookings.</h1>
-    <p>We build elegant websites, booking pages, WhatsApp flows and simple admin tools for apartments, restaurants, cafés, taxis, boat trips and local services.</p>
-    <div class="hero-actions"><a href="#demos" class="btn primary">View Demos</a><a href="#pricing" class="btn ghost">See Pricing</a></div>
-  </div>
-  <div class="hero-panel">
-    <div class="glass-card main-card">
-      <div class="mock-browser"><span></span><span></span><span></span></div>
-      <h3>Local Business Command Centre</h3>
-      <div class="metric-grid"><div><b>Booking</b><small>forms</small></div><div><b>WhatsApp</b><small>messages</small></div><div><b>Admin</b><small>dashboard</small></div><div><b>EN/ES</b><small>language</small></div></div>
-    </div>
-    <div class="float-card one">🚐 Transfer request</div>
-    <div class="float-card two">🍽️ Table booking</div>
-    <div class="float-card three">🏖️ Apartment enquiry</div>
-  </div>
-</section>
-
-<section class="trust-strip">
-  <div><b>1 website</b><span>built once</span></div><div><b>Many niches</b><span>adapted fast</span></div><div><b>Monthly support</b><span>simple fee</span></div><div><b>Local focus</b><span>Duquesa area</span></div>
-</section>
-
-<section id="services" class="section light">
-  <div class="section-head"><span class="eyebrow">What we build</span><h2>Digital tools for real local businesses.</h2><p>Not just a pretty page — a system that helps customers contact, book and trust the business faster.</p></div>
-  <div class="service-grid">
-    {% for s in services %}
-    <article class="service-tile">
-      <div class="icon">{{ s.icon }}</div><h3>{{ s.title }}</h3><p>{{ s.desc }}</p><a href="{{ url_for('demo', slug=s.slug) }}">Open demo →</a>
-    </article>
-    {% endfor %}
-  </div>
-</section>
-
-<section id="demos" class="section dark">
-  <div class="section-head"><span class="eyebrow">Demo showroom</span><h2>Show clients what they can buy.</h2><p>Each demo is designed as a sales example: apartment, restaurant, taxi, boat, cleaning, painting and mechanic.</p></div>
-  <div class="demo-showcase">
-    {% for s in services %}
-    <a class="demo-card" href="{{ url_for('demo', slug=s.slug) }}">
-      <img src="{{ s.image }}" alt="{{ s.title }}">
-      <div><span>{{ s.icon }}</span><h3>{{ s.title }}</h3><p>{{ s.desc }}</p></div>
-    </a>
-    {% endfor %}
-  </div>
-</section>
-
-<section id="pricing" class="section pricing-zone">
-  <div class="section-head"><span class="eyebrow">Simple pricing</span><h2>Setup fee + monthly support.</h2><p>The setup fee builds the website. The monthly fee covers hosting guidance, support, small edits, security updates and keeping the site running.</p></div>
-  <div class="pricing-grid">
-    {% for p in plans %}
-    <article class="price-card {% if p.name == 'Pro' %}featured{% endif %}">
-      <span class="pill">{{ p.tag }}</span><h3>{{ p.name }}</h3><p>{{ p.summary }}</p><div class="price"><b>{{ p.setup }}</b><span>setup</span></div><div class="monthly">{{ p.monthly }}</div>
-      <ul>{% for item in p['features'] %}<li>{{ item }}</li>{% endfor %}</ul>
-      <a class="btn {% if p.name == 'Pro' %}primary{% else %}outline{% endif %}" href="{{ url_for('contact') }}?plan={{ p.name }}">Ask about {{ p.name }}</a>
-    </article>
-    {% endfor %}
-  </div>
-</section>
-
-<section class="section process">
-  <div class="section-head"><span class="eyebrow">How it works</span><h2>From idea to live website.</h2></div>
-  <div class="steps"><div><b>01</b><h3>Choose demo</h3><p>The client picks a style and service type.</p></div><div><b>02</b><h3>Add content</h3><p>Photos, prices, logo, phone and services.</p></div><div><b>03</b><h3>Go live</h3><p>Website on Render/GitHub with WhatsApp and forms.</p></div></div>
-</section>
+{% extends 'base.html' %}{% block content %}
+<section class="hero"><div><p class="eyebrow">{{ 'WEB DESIGN FOR LOCAL BUSINESS' if lang=='en' else 'DISEÑO WEB PARA NEGOCIOS LOCALES' }}</p><h1>{{ 'Colourful websites that bring more bookings and WhatsApp enquiries.' if lang=='en' else 'Webs modernas que consiguen más reservas y consultas por WhatsApp.' }}</h1><p class="lead">{{ 'Built for apartments, restaurants, cafés, transfers, boat trips, cleaning, painters and mechanics around Duquesa.' if lang=='en' else 'Diseñado para apartamentos, restaurantes, cafeterías, traslados, barcos, limpieza, pintores y talleres en Duquesa.' }}</p><div class="actions"><a class="btn gold" href="#demos">{{ 'View demos' if lang=='en' else 'Ver demos' }}</a><a class="btn outline" href="{{ url_for('contact', lang=lang) }}">{{ 'Request a quote' if lang=='en' else 'Pedir presupuesto' }}</a></div></div><div class="hero-card"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80"><div class="float"><b>EN / ES</b><span>{{ 'mobile friendly' if lang=='en' else 'móvil friendly' }}</span></div></div></section>
+<section id="services" class="section light"><p class="eyebrow">{{ 'WHAT YOU CAN SELL' if lang=='en' else 'QUÉ PUEDES OFRECER' }}</p><h2>{{ 'One local digital partner for every business type.' if lang=='en' else 'Un socio digital local para cada tipo de negocio.' }}</h2><div class="service-grid"><div>📱<h3>{{ 'Mobile-first websites' if lang=='en' else 'Webs para móvil' }}</h3><p>{{ 'Fast pages that look professional on phones.' if lang=='en' else 'Páginas rápidas que se ven profesionales en móviles.' }}</p></div><div>💬<h3>WhatsApp</h3><p>{{ 'Buttons with ready-made messages for each service.' if lang=='en' else 'Botones con mensajes preparados para cada servicio.' }}</p></div><div>📩<h3>{{ 'Enquiry forms' if lang=='en' else 'Formularios' }}</h3><p>{{ 'Capture name, phone, email and service request.' if lang=='en' else 'Captura nombre, teléfono, email y solicitud.' }}</p></div><div>🌍<h3>English & Español</h3><p>{{ 'Language switcher for tourists and local clients.' if lang=='en' else 'Selector de idioma para turistas y clientes locales.' }}</p></div></div></section>
+<section id="demos" class="section navy"><p class="eyebrow goldtext">DEMO STYLES</p><h2>{{ 'Choose a business demo' if lang=='en' else 'Elige una demo de negocio' }}</h2><div class="demo-grid">{% for d in demos %}<a class="demo-card" href="{{ url_for('demo', slug=d.slug, lang=lang) }}"><img src="{{ d.img }}"><div><span>{{ d.emoji }}</span><h3>{{ d.title_en if lang=='en' else d.title_es }}</h3><p>{{ d.desc_en if lang=='en' else d.desc_es }}</p><b>{{ 'Open demo' if lang=='en' else 'Abrir demo' }} →</b></div></a>{% endfor %}</div></section>
+<section id="pricing" class="section light"><p class="eyebrow">{{ 'SIMPLE PRICING' if lang=='en' else 'PRECIOS SIMPLES' }}</p><h2>{{ 'Setup fee + monthly support' if lang=='en' else 'Precio inicial + soporte mensual' }}</h2><p class="lead dark">{{ 'The setup fee builds the website. The monthly fee covers hosting guidance, support, small edits, security updates and keeping the site running.' if lang=='en' else 'El precio inicial construye la web. La cuota mensual cubre hosting, soporte, pequeños cambios, seguridad y mantenimiento.' }}</p><div class="pricing-grid">{% for p in plans %}<article class="plan {% if p.featured %}featured{% endif %}"><span class="pill">{{ p.tag_en if lang=='en' else p.tag_es }}</span><h3>{{ p.name }}</h3><div class="price">{{ p.setup }}</div><div class="monthly">+ {{ p.monthly }} / {{ 'month' if lang=='en' else 'mes' }}</div><ul>{% for item in (p['items_en'] if lang=='en' else p['items_es']) %}<li>✓ {{ item }}</li>{% endfor %}</ul><a class="btn {% if p.featured %}gold{% else %}darkbtn{% endif %}" href="{{ url_for('contact', lang=lang) }}?plan={{ p.name }}">{{ 'Ask about' if lang=='en' else 'Consultar' }} {{ p.name }}</a></article>{% endfor %}</div></section>
+<section class="section cta"><h2>{{ 'Ready to show this to local businesses?' if lang=='en' else '¿Listo para enseñarlo a negocios locales?' }}</h2><p>{{ 'Use this site as your sales page and send prospects to the demos.' if lang=='en' else 'Usa esta web como página de venta y envía clientes a las demos.' }}</p><a class="btn gold" href="{{ url_for('contact', lang=lang) }}">{{ 'Start a conversation' if lang=='en' else 'Empezar conversación' }}</a></section>
 {% endblock %}

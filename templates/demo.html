@@ -1,19 +1,4 @@
-{% extends 'base.html' %}
-{% block title %}{{ service.title }} Demo · Duquesa Digital Services{% endblock %}
-{% block content %}
-<section class="demo-hero" style="--bg:url('{{ service.image }}')">
-  <div><span class="eyebrow">Demo Website</span><h1>{{ service.icon }} {{ service.title }}</h1><p>{{ service.desc }}</p><a class="btn primary" href="{{ whatsapp }}" target="_blank">Request this demo</a></div>
-</section>
-<section class="section light demo-layout">
-  <div class="demo-phone">
-    <div class="phone-top"></div>
-    <img src="{{ service.image }}" alt="{{ service.title }}">
-    <h3>{{ service.title }}</h3><p>Fast mobile page with gallery, service cards, contact buttons and clear booking request.</p><a class="btn primary" href="{{ whatsapp }}" target="_blank">WhatsApp enquiry</a>
-  </div>
-  <div class="demo-details">
-    <span class="eyebrow">What this demo includes</span><h2>Designed to sell the service quickly.</h2>
-    <div class="feature-list"><div>✅ Mobile-first landing page</div><div>✅ WhatsApp with pre-filled enquiry</div><div>✅ Prices or quote request</div><div>✅ Gallery and trust sections</div><div>✅ English + Spanish ready</div><div>✅ Upgradeable to booking/admin dashboard</div></div>
-    <a href="{{ url_for('contact') }}?service={{ service.title }}" class="btn ghost-dark">Talk about this demo</a>
-  </div>
-</section>
+{% extends 'base.html' %}{% block content %}
+<section class="demo-hero"><div><p class="eyebrow">DEMO PREVIEW</p><h1>{{ card.title_en if lang=='en' else card.title_es }}</h1><p class="lead">{{ card.desc_en if lang=='en' else card.desc_es }}</p><a class="btn gold" href="{{ wa }}" target="_blank">{{ 'Message about this demo' if lang=='en' else 'Mensaje sobre esta demo' }}</a></div><img src="{{ card.img }}"></section>
+<section class="section light"><h2>{{ 'What this demo could include' if lang=='en' else 'Qué puede incluir esta demo' }}</h2><div class="service-grid"><div>📸<h3>{{ 'Gallery' if lang=='en' else 'Galería' }}</h3><p>{{ 'Beautiful photos and premium cards.' if lang=='en' else 'Fotos bonitas y tarjetas premium.' }}</p></div><div>💬<h3>WhatsApp</h3><p>{{ 'Service-specific pre-filled message.' if lang=='en' else 'Mensaje preparado según el servicio.' }}</p></div><div>📆<h3>{{ 'Bookings' if lang=='en' else 'Reservas' }}</h3><p>{{ 'Booking or quote form depending on the business.' if lang=='en' else 'Formulario de reserva o presupuesto.' }}</p></div><div>⭐<h3>{{ 'Reviews' if lang=='en' else 'Reseñas' }}</h3><p>{{ 'Trust section to help convert visitors.' if lang=='en' else 'Sección de confianza para convertir visitantes.' }}</p></div></div></section>
 {% endblock %}
