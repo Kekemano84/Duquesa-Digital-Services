@@ -94,3 +94,56 @@ textarea{min-height:130px}
   .feature-grid,.demo-grid,.pricing-grid,.admin-grid{grid-template-columns:1fr}
   .hero-card img{height:360px}
 }
+
+.live-demo-hero{
+  min-height:72vh;
+  display:flex;
+  align-items:center;
+  padding:7%;
+  color:white;
+  background-size:cover;
+  background-position:center;
+  position:relative;
+}
+.live-demo-hero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(7,23,45,.88),rgba(33,74,154,.35));
+}
+.live-demo-overlay{position:relative;max-width:850px}
+.live-demo-overlay h1{font-size:clamp(3.5rem,8vw,7rem)}
+.demo-apartment{background-image:url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1600&q=80')}
+.demo-restaurant{background-image:url('https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1600&q=80')}
+.demo-cafe{background-image:url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1600&q=80')}
+.demo-taxi{background-image:url('https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=1600&q=80')}
+.demo-boat{background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80')}
+.demo-cleaning{background-image:url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80')}
+.demo-painting{background-image:url('https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=1600&q=80')}
+.demo-mechanic{background-image:url('https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1600&q=80')}
+.demo-page{padding:80px 7%}
+.demo-page.light{background:#fffaf1}
+.demo-page.dark{background:linear-gradient(135deg,var(--navy),var(--blue));color:white}
+.demo-page{display:grid;grid-template-columns:1fr 1fr;gap:42px;align-items:center}
+.demo-page>h2{grid-column:1/-1}
+.demo-gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.demo-gallery img{width:100%;height:190px;object-fit:cover;border-radius:24px;box-shadow:var(--shadow)}
+.demo-gallery img:first-child{grid-column:1/-1;height:260px}
+.tick-list{list-style:none;padding:0;line-height:2.1;font-weight:800}
+.tick-list li:before{content:"✓ ";color:var(--red)}
+.fake-booking,.offer-grid,.menu-list,.price-routes{display:grid;gap:18px}
+.fake-booking{grid-template-columns:repeat(4,1fr)}
+.fake-booking div,.offer-grid article,.menu-list article,.price-routes article{
+  background:white;color:var(--ink);padding:24px;border-radius:24px;box-shadow:var(--shadow);border:1px solid rgba(247,127,0,.22)
+}
+.fake-booking b,.fake-booking span,.price-routes b,.price-routes span{display:block}
+.fake-booking span,.price-routes span{color:var(--red);font-weight:900;margin-top:8px}
+.offer-grid{grid-template-columns:repeat(3,1fr)}
+.menu-list article{display:grid;grid-template-columns:1fr auto;gap:8px}
+.menu-list p{grid-column:1/-1;margin:0;color:var(--muted)}
+.inline-form{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;grid-column:1/-1}
+.inline-form input{margin:0}
+@media(max-width:900px){
+  .demo-page{grid-template-columns:1fr}
+  .fake-booking,.offer-grid,.inline-form{grid-template-columns:1fr}
+}

@@ -1,30 +1,156 @@
 
 {% extends "base.html" %}
 {% block content %}
-<section class="demo-hero">
+
+{% set name = demo.name if lang == 'en' else demo.name_es %}
+{% set desc = demo.desc if lang == 'en' else demo.desc_es %}
+
+<section class="live-demo-hero demo-{{ demo.slug }}">
+  <div class="live-demo-overlay">
+    <p class="eyebrow">LIVE DEMO WEBSITE</p>
+    <h1>{{ name }}</h1>
+    <p>{{ desc }}</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#demo-booking">Request / Book</a>
+      <a class="btn ghost" href="https://wa.me/{{ whatsapp }}?text=Hello%2C%20I%20am%20interested%20in%20the%20{{ demo.name|urlencode }}%20demo." target="_blank">WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+{% if demo.slug == 'apartment' %}
+<section class="demo-page light">
   <div>
-    <p class="eyebrow">DEMO PREVIEW</p>
-    <h1>{{ demo.name if lang == 'en' else demo.name_es }}</h1>
-    <p>{{ demo.desc if lang == 'en' else demo.desc_es }}</p>
-    <a class="btn primary" href="https://wa.me/{{ whatsapp }}?text=Hello%2C%20I%20would%20like%20a%20{{ demo.name|urlencode }}%20website%20demo." target="_blank">WhatsApp enquiry</a>
+    <p class="eyebrow">HOLIDAY RENTAL</p>
+    <h2>Luxury coastal stay with easy booking</h2>
+    <p>A polished apartment website with gallery, availability request, guest details and optional extras such as airport transfer and boat trips.</p>
+    <ul class="tick-list">
+      <li>Up to 4 guests</li><li>No pets</li><li>Check-in information</li><li>WhatsApp enquiry</li>
+    </ul>
   </div>
-  <img src="{{ demo.img }}" alt="{{ demo.name }}">
+  <div class="demo-gallery">
+    <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80">
+    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=900&q=80">
+    <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=900&q=80">
+  </div>
 </section>
-<section class="section light">
-  <h2>What this demo includes</h2>
+<section class="demo-page dark">
+  <h2>Availability request</h2>
+  <div class="fake-booking">
+    <div><b>Arrival</b><span>12 July 2026</span></div>
+    <div><b>Departure</b><span>19 July 2026</span></div>
+    <div><b>Guests</b><span>4</span></div>
+    <div><b>Estimated</b><span>€840</span></div>
+  </div>
+</section>
+{% elif demo.slug == 'restaurant' %}
+<section class="demo-page light">
+  <div>
+    <p class="eyebrow">RESTAURANT DEMO</p>
+    <h2>Menu, table booking and special offers</h2>
+    <p>Perfect for restaurants that want a beautiful mobile menu and quick reservation enquiries.</p>
+  </div>
+  <div class="menu-list">
+    <article><b>Seafood Paella</b><span>€18.90</span><p>Fresh seafood, saffron rice and Mediterranean herbs.</p></article>
+    <article><b>Grilled Sea Bass</b><span>€22.00</span><p>Served with lemon potatoes and seasonal salad.</p></article>
+    <article><b>Tapas Selection</b><span>€14.50</span><p>Perfect for sharing with wine or sangria.</p></article>
+  </div>
+</section>
+<section id="demo-booking" class="demo-page dark"><h2>Table reservation demo</h2><form class="inline-form"><input placeholder="Name"><input placeholder="Date"><input placeholder="Guests"><button class="btn primary">Request Table</button></form></section>
+{% elif demo.slug == 'cafe' %}
+<section class="demo-page light">
+  <div>
+    <p class="eyebrow">CAFÉ DEMO</p>
+    <h2>Coffee, breakfast and daily offers</h2>
+    <p>A friendly café website with menu, photo gallery, opening hours and WhatsApp contact.</p>
+  </div>
+  <div class="offer-grid">
+    <article>☕ <b>Morning Coffee</b><p>Coffee + croissant from €4.50</p></article>
+    <article>🥐 <b>Breakfast Deal</b><p>Toast, coffee and fresh juice</p></article>
+    <article>🍰 <b>Sweet Corner</b><p>Cakes, pastries and desserts</p></article>
+  </div>
+</section>
+<section class="demo-page dark"><h2>Opening hours</h2><div class="fake-booking"><div><b>Mon-Fri</b><span>08:00-18:00</span></div><div><b>Sat-Sun</b><span>09:00-16:00</span></div></div></section>
+{% elif demo.slug == 'taxi' %}
+<section class="demo-page light">
+  <div>
+    <p class="eyebrow">TRANSFER DEMO</p>
+    <h2>Airport transfer with fixed prices</h2>
+    <p>Built for private taxi drivers and transfer companies. Ideal for Malaga, Gibraltar, Marbella and Duquesa routes.</p>
+    <ul class="tick-list"><li>Mercedes Vito style van</li><li>Up to 6 passengers</li><li>Airport pickup</li><li>Large luggage space</li></ul>
+  </div>
+  <div class="price-routes">
+    <article><b>Malaga Airport → Duquesa</b><span>From €120</span></article>
+    <article><b>Gibraltar Airport → Duquesa</b><span>From €90</span></article>
+    <article><b>Local Taxi Trip</b><span>From €40</span></article>
+  </div>
+</section>
+<section id="demo-booking" class="demo-page dark"><h2>Transfer request demo</h2><form class="inline-form"><input placeholder="Pickup"><input placeholder="Destination"><input placeholder="Flight time"><button class="btn primary">Request Transfer</button></form></section>
+{% elif demo.slug == 'boat' %}
+<section class="demo-page light">
+  <div>
+    <p class="eyebrow">BOAT TRIP DEMO</p>
+    <h2>Dolphin watching, sunset cruises and private charters</h2>
+    <p>Beautiful landing page for boat trip operators with packages, photos and WhatsApp booking messages.</p>
+  </div>
+  <div class="offer-grid">
+    <article>🐬 <b>Dolphin Watching</b><p>Family-friendly coastal trip from €120</p></article>
+    <article>🌅 <b>Sunset Cruise</b><p>Private sunset experience from €220</p></article>
+    <article>🎣 <b>Fishing Trip</b><p>Fishing and boat experience from €220</p></article>
+  </div>
+</section>
+<section class="demo-page dark"><h2>Popular packages</h2><div class="fake-booking"><div><b>Dolphin Trip</b><span>2 hours</span></div><div><b>Private Charter</b><span>Half day</span></div><div><b>Sunset</b><span>Evening</span></div></div></section>
+{% elif demo.slug == 'cleaning' %}
+<section class="demo-page light">
+  <div>
+    <p class="eyebrow">CLEANING DEMO</p>
+    <h2>Quote requests for local cleaners</h2>
+    <p>Designed for cleaning businesses that need quote forms, before/after gallery and quick WhatsApp contact.</p>
+  </div>
+  <div class="offer-grid">
+    <article>🏠 <b>Apartment Cleaning</b><p>Holiday rental turnaround cleaning</p></article>
+    <article>🧽 <b>Deep Cleaning</b><p>One-off full property clean</p></article>
+    <article>🪟 <b>Window Cleaning</b><p>Optional extras and add-ons</p></article>
+  </div>
+</section>
+<section id="demo-booking" class="demo-page dark"><h2>Cleaning quote demo</h2><form class="inline-form"><input placeholder="Property type"><input placeholder="Bedrooms"><input placeholder="Preferred date"><button class="btn primary">Request Quote</button></form></section>
+{% elif demo.slug == 'painting' %}
+<section class="demo-page light">
+  <div>
+    <p class="eyebrow">PAINTING DEMO</p>
+    <h2>Painting and home improvement enquiries</h2>
+    <p>A clean professional website for painters with project gallery, service list and estimate request.</p>
+  </div>
+  <div class="offer-grid">
+    <article>🎨 <b>Interior Painting</b><p>Rooms, apartments and villas</p></article>
+    <article>🏡 <b>Exterior Painting</b><p>Walls, gates and facades</p></article>
+    <article>🧰 <b>Small Repairs</b><p>Preparation and finishing work</p></article>
+  </div>
+</section>
+<section id="demo-booking" class="demo-page dark"><h2>Painting quote demo</h2><form class="inline-form"><input placeholder="Work needed"><input placeholder="Location"><input placeholder="Phone"><button class="btn primary">Request Quote</button></form></section>
+{% elif demo.slug == 'mechanic' %}
+<section class="demo-page light">
+  <div>
+    <p class="eyebrow">GARAGE DEMO</p>
+    <h2>Service booking for mechanics and garages</h2>
+    <p>For local garages that want customers to request repairs, diagnostics and servicing online.</p>
+  </div>
+  <div class="offer-grid">
+    <article>🔧 <b>Diagnostics</b><p>Engine lights and fault checks</p></article>
+    <article>🛞 <b>Tyres & Brakes</b><p>Safety checks and replacement</p></article>
+    <article>🧰 <b>Service Booking</b><p>Oil, filters and general maintenance</p></article>
+  </div>
+</section>
+<section id="demo-booking" class="demo-page dark"><h2>Garage booking demo</h2><form class="inline-form"><input placeholder="Car model"><input placeholder="Problem"><input placeholder="Preferred date"><button class="btn primary">Request Booking</button></form></section>
+{% endif %}
+
+<section class="demo-page light">
+  <h2>Why this works for local businesses</h2>
   <div class="feature-grid">
-    {% for f in demo.features %}
-    <article><span>✅</span><h3>{{ f }}</h3><p>Designed to help customers enquire quickly and clearly.</p></article>
-    {% endfor %}
+    <article><span>📱</span><h3>Mobile first</h3><p>Most tourists and local customers browse from their phone.</p></article>
+    <article><span>💬</span><h3>WhatsApp ready</h3><p>Prepared messages make enquiries faster and clearer.</p></article>
+    <article><span>🌍</span><h3>EN / ES</h3><p>Useful for English-speaking visitors and Spanish local businesses.</p></article>
+    <article><span>⚡</span><h3>Fast demo</h3><p>Easy to adapt for different businesses and packages.</p></article>
   </div>
 </section>
-<section class="section demo-preview">
-  <h2>Example customer flow</h2>
-  <div class="preview-box">
-    <p><b>1.</b> Customer opens the page</p>
-    <p><b>2.</b> Checks services, gallery and price guidance</p>
-    <p><b>3.</b> Clicks WhatsApp or sends a quote form</p>
-    <p><b>4.</b> Business receives a clear enquiry</p>
-  </div>
-</section>
+
 {% endblock %}
